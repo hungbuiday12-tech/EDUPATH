@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EDUPATH - Lộ trình cá nhân</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+    ☀️
+</button>
+    
+
+<div class="page">
+
+    <button class="back-home" onclick="goHome()">
+        <span>←</span>
+        <span>Về trang chủ</span>
+    </button>
+
+
+    <main class="feature-page">
+
+        <section class="feature-hero">
+
+            <div class="feature-big-icon">
+                🎯
+            </div>
+
+            <p class="feature-eyebrow">
+                EDUPATH
+            </p>
+
+            <h1>LỘ TRÌNH CÁ NHÂN</h1>
+
+            <div class="feature-line"></div>
+
+            <p>
+                Xây dựng con đường học tập phù hợp
+                với mục tiêu và kết quả của bạn.
+            </p>
+
+        </section>
+
+
+        <section class="roadmap-section">
+
+            <h2>🎯 Lộ trình học tập</h2>
+
+            <p>
+                EDUPATH sẽ dựa trên kết quả luyện tập,
+                những kiến thức còn yếu và mục tiêu học tập
+                để đề xuất nội dung phù hợp.
+            </p>
+
+
+            <div class="roadmap">
+
+                <div class="roadmap-item active">
+
+                    <div class="roadmap-number">
+                        1
+                    </div>
+
+                    <div>
+
+                        <h3>Đánh giá kiến thức</h3>
+
+                        <p>
+                            Làm bài để xác định mức độ nắm vững
+                            kiến thức hiện tại.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-item">
+
+                    <div class="roadmap-number">
+                        2
+                    </div>
+
+                    <div>
+
+                        <h3>Xác định điểm yếu</h3>
+
+                        <p>
+                            Hệ thống xác định những chủ đề
+                            bạn cần cải thiện.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-item">
+
+                    <div class="roadmap-number">
+                        3
+                    </div>
+
+                    <div>
+
+                        <h3>Đề xuất nội dung</h3>
+
+                        <p>
+                            Gợi ý bài học và bài tập phù hợp
+                            với kết quả của bạn.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-item">
+
+                    <div class="roadmap-number">
+                        4
+                    </div>
+
+                    <div>
+
+                        <h3>Theo dõi tiến bộ</h3>
+
+                        <p>
+                            Cập nhật kết quả và điều chỉnh
+                            lộ trình học tập.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="roadmap-empty">
+
+                <div>🚀</div>
+
+                <h3>Hãy bắt đầu hành trình</h3>
+
+                <p>
+                    Làm bài luyện tập đầu tiên để EDUPATH
+                    bắt đầu xây dựng lộ trình dành riêng cho bạn.
+                </p>
+
+                <button onclick="openPractice()">
+                    ✏️ Bắt đầu luyện tập
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../theme.js"></script>
+
+<script>
+
+function goHome() {
+    window.location.href = "../index.html";
+}
+
+function openPractice() {
+    window.location.href = "practice.html";
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>EDUPATH - Môn học</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="subject-page">
+
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+
+    ☀️
+
+</button>
+
+    <div class="page">
+        <button class="back-home" onclick="goHome()">
+    <span>←</span>
+    <span>Về trang chủ</span>
+</button>
+
+        <h1 id="subjectTitle">Môn học</h1>
+
+        <p>Đây là trang học tập của môn học.</p>
+
+        <div class="subject-box">
+            <h2>Nội dung môn học</h2>
+            <p>Các bài học sẽ được thêm vào đây.</p>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const subject = params.get("subject");
+
+        if (subject) {
+            document.getElementById("subjectTitle").innerText = subject;
+            document.title = "EDUPATH - " + subject;
+        }
+
+        function goHome() {
+            window.location.href = "../index.html";
+        }
+    </script>
+<script src="../theme.js"></script>
+</body>
+</html>
