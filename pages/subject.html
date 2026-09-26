@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDUPATH - Môn học</title>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -9,40 +11,474 @@
 <body class="subject-page">
 
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-
     ☀️
-
 </button>
 
-    <div class="page">
-        <button class="back-home" onclick="goHome()">
-    <span>←</span>
-    <span>Về trang chủ</span>
-</button>
+<div class="page">
 
-        <h1 id="subjectTitle">Môn học</h1>
+    <button class="back-home" onclick="goHome()">
+        <span>←</span>
+        <span>Về trang chủ</span>
+    </button>
 
-        <p>Đây là trang học tập của môn học.</p>
+    <div class="subject-hero">
 
-        <div class="subject-box">
-            <h2>Nội dung môn học</h2>
-            <p>Các bài học sẽ được thêm vào đây.</p>
+        <div class="subject-icon" id="subjectIcon">
+            📚
         </div>
+
+        <div>
+            <p class="subject-label">MÔN HỌC</p>
+            <h1 id="subjectTitle">Môn học</h1>
+            <p id="subjectDescription">
+                Học kiến thức và luyện tập cùng EDUPATH.
+            </p>
+        </div>
+
     </div>
 
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const subject = params.get("subject");
 
-        if (subject) {
-            document.getElementById("subjectTitle").innerText = subject;
-            document.title = "EDUPATH - " + subject;
-        }
+    <div class="subject-actions">
 
-        function goHome() {
-            window.location.href = "../index.html";
-        }
-    </script>
+        <button class="subject-action-card" onclick="openLessons()">
+
+            <div class="subject-action-icon">
+                📖
+            </div>
+
+            <div>
+                <h2>Học bài</h2>
+                <p>
+                    Học các kiến thức và chủ đề quan trọng.
+                </p>
+            </div>
+
+        </button>
+
+
+        <button class="subject-action-card" onclick="openPractice()">
+
+            <div class="subject-action-icon">
+                ✏️
+            </div>
+
+            <div>
+                <h2>Luyện tập</h2>
+                <p>
+                    Làm bài tập để củng cố kiến thức.
+                </p>
+            </div>
+
+        </button>
+
+    </div>
+
+
+    <button class="subject-ai-card" onclick="openSubjectAI()">
+
+        <div class="subject-ai-icon">
+            🤖
+        </div>
+
+        <div class="subject-ai-content">
+            <h2>AI Trợ giảng</h2>
+
+            <p>
+                Hỏi AI về bài học, bài tập hoặc kiến thức
+                của <strong id="aiSubjectName">môn học này</strong>.
+            </p>
+        </div>
+
+        <div class="subject-ai-arrow">
+            →
+        </div>
+
+    </button>
+
+
+    <section class="lesson-preview">
+
+        <div class="section-heading">
+            <div>
+                <h2>📚 Nội dung học tập</h2>
+                <p>Các chủ đề sẽ được cập nhật tại đây.</p>
+            </div>
+        </div>
+
+        <div class="topic-grid" id="topicGrid">
+        </div>
+
+    </section>
+
+</div>
+
+
 <script src="../theme.js"></script>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const subject = params.get("subject") || "Môn học";
+
+
+const subjectData = {
+
+    "Toán 6": {
+        icon: "📐",
+        description: "Học và luyện tập kiến thức Toán lớp 6.",
+        topics: [
+            "Số tự nhiên",
+            "Số nguyên",
+            "Phân số",
+            "Hình học cơ bản"
+        ]
+    },
+
+    "Toán 7": {
+        icon: "📐",
+        description: "Học và luyện tập kiến thức Toán lớp 7.",
+        topics: [
+            "Số hữu tỉ",
+            "Số thực",
+            "Biểu thức đại số",
+            "Hình học"
+        ]
+    },
+
+    "Toán 8": {
+        icon: "📐",
+        description: "Học và luyện tập kiến thức Toán lớp 8.",
+        topics: [
+            "Đa thức",
+            "Phân thức đại số",
+            "Phương trình",
+            "Hình học"
+        ]
+    },
+
+    "Toán 9": {
+        icon: "📐",
+        description: "Học và luyện tập kiến thức Toán lớp 9.",
+        topics: [
+            "Căn bậc hai",
+            "Hệ phương trình",
+            "Hàm số",
+            "Hình học"
+        ]
+    },
+
+    "Tiếng Anh 6": {
+        icon: "🇬🇧",
+        description: "Học và luyện tập Tiếng Anh lớp 6.",
+        topics: [
+            "Từ vựng",
+            "Ngữ pháp",
+            "Đọc hiểu",
+            "Giao tiếp"
+        ]
+    },
+
+    "Tiếng Anh 7": {
+        icon: "🇬🇧",
+        description: "Học và luyện tập Tiếng Anh lớp 7.",
+        topics: [
+            "Từ vựng",
+            "Ngữ pháp",
+            "Đọc hiểu",
+            "Giao tiếp"
+        ]
+    },
+
+    "Tiếng Anh 8": {
+        icon: "🇬🇧",
+        description: "Học và luyện tập Tiếng Anh lớp 8.",
+        topics: [
+            "Từ vựng",
+            "Ngữ pháp",
+            "Đọc hiểu",
+            "Viết"
+        ]
+    },
+
+    "Tiếng Anh 9": {
+        icon: "🇬🇧",
+        description: "Học và luyện tập Tiếng Anh lớp 9.",
+        topics: [
+            "Từ vựng",
+            "Ngữ pháp",
+            "Đọc hiểu",
+            "Viết"
+        ]
+    },
+
+    "Vật lí 6": {
+        icon: "⚡",
+        description: "Học và luyện tập Vật lí lớp 6.",
+        topics: [
+            "Đo lường",
+            "Lực",
+            "Năng lượng",
+            "Nhiệt"
+        ]
+    },
+
+    "Vật lí 7": {
+        icon: "⚡",
+        description: "Học và luyện tập Vật lí lớp 7.",
+        topics: [
+            "Âm thanh",
+            "Ánh sáng",
+            "Điện",
+            "Nam châm"
+        ]
+    },
+
+    "Vật lí 8": {
+        icon: "⚡",
+        description: "Học và luyện tập Vật lí lớp 8.",
+        topics: [
+            "Cơ học",
+            "Áp suất",
+            "Nhiệt học",
+            "Công và công suất"
+        ]
+    },
+
+    "Vật lí 9": {
+        icon: "⚡",
+        description: "Học và luyện tập Vật lí lớp 9.",
+        topics: [
+            "Điện học",
+            "Điện từ học",
+            "Quang học",
+            "Năng lượng"
+        ]
+    },
+
+    "Hóa học 6": {
+        icon: "🧪",
+        description: "Học và luyện tập kiến thức Hóa học lớp 6.",
+        topics: [
+            "Chất",
+            "Nguyên tử",
+            "Phân tử",
+            "Phản ứng hóa học"
+        ]
+    },
+
+    "Hóa học 7": {
+        icon: "🧪",
+        description: "Học và luyện tập kiến thức Hóa học lớp 7.",
+        topics: [
+            "Nguyên tố hóa học",
+            "Công thức hóa học",
+            "Phản ứng hóa học",
+            "Dung dịch"
+        ]
+    },
+
+    "Hóa học 8": {
+        icon: "🧪",
+        description: "Học và luyện tập kiến thức Hóa học lớp 8.",
+        topics: [
+            "Chất và nguyên tử",
+            "Phản ứng hóa học",
+            "Mol",
+            "Dung dịch"
+        ]
+    },
+
+    "Hóa học 9": {
+        icon: "🧪",
+        description: "Học và luyện tập kiến thức Hóa học lớp 9.",
+        topics: [
+            "Kim loại",
+            "Phi kim",
+            "Hợp chất hữu cơ",
+            "Hóa học và đời sống"
+        ]
+    },
+
+    "Sinh học 6": {
+        icon: "🌱",
+        description: "Học và luyện tập Sinh học lớp 6.",
+        topics: [
+            "Tế bào",
+            "Thực vật",
+            "Sinh vật",
+            "Đa dạng sinh học"
+        ]
+    },
+
+    "Sinh học 7": {
+        icon: "🌱",
+        description: "Học và luyện tập Sinh học lớp 7.",
+        topics: [
+            "Động vật",
+            "Các nhóm động vật",
+            "Sinh thái",
+            "Đa dạng sinh học"
+        ]
+    },
+
+    "Sinh học 8": {
+        icon: "🌱",
+        description: "Học và luyện tập Sinh học lớp 8.",
+        topics: [
+            "Cơ thể người",
+            "Hệ vận động",
+            "Hệ tuần hoàn",
+            "Hệ thần kinh"
+        ]
+    },
+
+    "Sinh học 9": {
+        icon: "🌱",
+        description: "Học và luyện tập Sinh học lớp 9.",
+        topics: [
+            "Di truyền học",
+            "Biến dị",
+            "Sinh vật và môi trường",
+            "Tiến hóa"
+        ]
+    },
+
+    "Tin học 6": {
+        icon: "💻",
+        description: "Học và luyện tập Tin học lớp 6.",
+        topics: [
+            "Thông tin và dữ liệu",
+            "Mạng máy tính",
+            "Internet",
+            "Thuật toán"
+        ]
+    },
+
+    "Tin học 7": {
+        icon: "💻",
+        description: "Học và luyện tập Tin học lớp 7.",
+        topics: [
+            "Máy tính",
+            "Bảng tính",
+            "Thuật toán",
+            "Lập trình"
+        ]
+    },
+
+    "Tin học 8": {
+        icon: "💻",
+        description: "Học và luyện tập Tin học lớp 8.",
+        topics: [
+            "Thuật toán",
+            "Lập trình",
+            "Python",
+            "Tin học ứng dụng"
+        ]
+    },
+
+    "Tin học 9": {
+        icon: "💻",
+        description: "Học và luyện tập Tin học lớp 9.",
+        topics: [
+            "Lập trình",
+            "Thuật toán",
+            "Cơ sở dữ liệu",
+            "Tin học ứng dụng"
+        ]
+    }
+
+};
+
+
+const data = subjectData[subject] || {
+    icon: "📚",
+    description: "Học kiến thức và luyện tập cùng EDUPATH.",
+    topics: [
+        "Kiến thức cơ bản",
+        "Kiến thức nâng cao",
+        "Bài tập",
+        "Luyện tập"
+    ]
+};
+
+
+document.getElementById("subjectTitle").innerText = subject;
+
+document.getElementById("subjectIcon").innerText = data.icon;
+
+document.getElementById("subjectDescription").innerText =
+    data.description;
+
+document.getElementById("aiSubjectName").innerText =
+    subject;
+
+document.title = "EDUPATH - " + subject;
+
+
+const topicGrid = document.getElementById("topicGrid");
+
+
+data.topics.forEach(function(topic, index) {
+
+    const card = document.createElement("div");
+
+    card.className = "topic-card";
+
+    card.innerHTML = `
+        <div class="topic-number">
+            ${index + 1}
+        </div>
+
+        <div>
+            <h3>${topic}</h3>
+            <p>Khám phá nội dung</p>
+        </div>
+
+        <span>→</span>
+    `;
+
+    topicGrid.appendChild(card);
+
+});
+
+
+function goHome() {
+
+    window.location.href = "../index.html";
+
+}
+
+
+function openLessons() {
+
+    alert(
+        "Khu vực bài học của " +
+        subject +
+        " sẽ được phát triển tiếp."
+    );
+
+}
+
+
+function openPractice() {
+
+    window.location.href =
+        "practice.html?subject=" +
+        encodeURIComponent(subject);
+
+}
+
+
+function openSubjectAI() {
+
+    window.location.href =
+        "ai.html?subject=" +
+        encodeURIComponent(subject);
+
+}
+
+</script>
+
 </body>
 </html>
