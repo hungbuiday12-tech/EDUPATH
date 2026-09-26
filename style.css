@@ -2993,3 +2993,953 @@ body.light-mode.ai-page p {
 
 }
 ```
+/* =========================================================
+   EDUPATH — MOBILE RESPONSIVE V2
+   Tối ưu cho điện thoại
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* =========================
+       BODY
+       ========================= */
+
+    body {
+        min-width: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .header {
+        height: auto;
+        min-height: 72px;
+
+        padding: 12px 14px;
+
+        gap: 10px;
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        gap: 9px;
+
+        min-width: 0;
+
+        flex: 1;
+    }
+
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+
+        flex-shrink: 0;
+
+        border-radius: 11px;
+
+        font-size: 21px;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+
+        letter-spacing: 1.5px;
+
+        white-space: nowrap;
+    }
+
+    .logo p {
+        display: none;
+    }
+
+    /* =========================
+       HEADER BUTTONS
+       ========================= */
+
+    .header-actions {
+        display: flex;
+
+        gap: 6px;
+
+        flex-shrink: 0;
+    }
+
+    .header-tool,
+    .ai-button {
+        width: 42px;
+        height: 42px;
+
+        padding: 0;
+
+        justify-content: center;
+
+        border-radius: 11px;
+
+        flex-shrink: 0;
+    }
+
+    .header-tool span:last-child,
+    .ai-button span:last-child {
+        display: none;
+    }
+
+    .header-tool span:first-child,
+    .ai-button span:first-child {
+        font-size: 17px;
+    }
+
+    /* =========================
+       LAYOUT
+       ========================= */
+
+    .layout {
+        display: block;
+
+        min-height: calc(100vh - 72px);
+    }
+
+    /* =========================
+       SIDEBAR MOBILE
+       ========================= */
+
+    .sidebar {
+        width: 100%;
+
+        height: auto;
+
+        padding: 8px 10px;
+
+        border-right: none;
+
+        border-bottom: 1px solid #484238;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 5px;
+
+        overflow-x: auto;
+
+        position: relative;
+    }
+
+    .menu-title {
+        display: none;
+    }
+
+    .menu-item {
+        width: auto;
+
+        min-width: max-content;
+
+        margin: 0;
+
+        padding: 9px 11px;
+
+        justify-content: center;
+
+        gap: 5px;
+
+        font-size: 12px;
+
+        white-space: nowrap;
+    }
+
+    .menu-item span {
+        display: inline;
+    }
+
+    .menu-item:hover {
+        transform: none;
+    }
+
+    .sidebar-bottom {
+        position: static;
+
+        margin-left: auto;
+
+        flex-shrink: 0;
+    }
+
+    .user-box {
+        padding: 7px;
+
+        border-radius: 10px;
+    }
+
+    .user-box div:not(.avatar) {
+        display: none;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+
+        font-size: 9px;
+    }
+
+    /* =========================
+       MAIN
+       ========================= */
+
+    .main {
+        width: 100%;
+
+        padding: 16px 12px;
+
+        overflow: visible;
+    }
+
+    /* =========================
+       WELCOME
+       ========================= */
+
+    .welcome {
+        min-height: 130px;
+
+        padding: 22px 20px;
+
+        margin-bottom: 22px;
+
+        border-radius: 15px;
+    }
+
+    .welcome h2 {
+        font-size: 29px;
+
+        line-height: 1.15;
+    }
+
+    .welcome-small {
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .welcome-text {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+    .welcome-icon {
+        font-size: 45px;
+
+        margin-left: 8px;
+
+        flex-shrink: 0;
+    }
+
+    /* =========================
+       SECTION HEADING
+       ========================= */
+
+    .section-heading {
+        margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+        font-size: 19px;
+
+        line-height: 1.3;
+    }
+
+    .section-heading p {
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+    /* =========================
+       GRADE GRID
+       ========================= */
+
+    .grade-grid {
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+    }
+
+    /* =========================
+       GRADE CARD
+       ========================= */
+
+    .grade-card {
+        min-height: auto;
+
+        padding: 18px;
+
+        border-radius: 14px;
+    }
+
+    .grade-card:hover {
+        transform: none;
+    }
+
+    .grade-ellipse {
+        width: 105px;
+        height: 68px;
+
+        margin-bottom: 17px;
+    }
+
+    .grade-ellipse strong {
+        font-size: 25px;
+    }
+
+    /* =========================
+       SUBJECT BUTTONS
+       ========================= */
+
+    .subject-list {
+        gap: 6px;
+    }
+
+    .subject-list button {
+        padding: 11px;
+
+        font-size: 13px;
+
+        min-height: 42px;
+    }
+
+    .subject-list button:hover {
+        padding-left: 11px;
+    }
+
+    /* =========================
+       TUYỂN SINH 10
+       ========================= */
+
+    .grade-10-title {
+        margin-bottom: 17px;
+
+        gap: 9px;
+    }
+
+    .grade-10-title span {
+        font-size: 24px;
+    }
+
+    .grade-10-title small {
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .grade-10-title strong {
+        font-size: 13px;
+
+        line-height: 1.3;
+    }
+
+    /* =========================
+       EXAM BUTTONS
+       ========================= */
+
+    .exam-actions {
+        gap: 6px;
+
+        margin-top: 13px;
+    }
+
+    .exam-actions button {
+        padding: 10px 3px;
+
+        font-size: 10px;
+
+        min-height: 38px;
+    }
+
+    /* =========================
+       FEATURES
+       ========================= */
+
+    .features {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-top: 22px;
+    }
+
+    .feature-card {
+        padding: 15px;
+
+        gap: 12px;
+    }
+
+    .feature-icon {
+        font-size: 24px;
+
+        flex-shrink: 0;
+    }
+
+    .feature-card h3 {
+        font-size: 13px;
+    }
+
+    .feature-card p {
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+        margin-top: 25px;
+
+        padding: 17px 5px;
+
+        text-align: center;
+
+        line-height: 1.5;
+    }
+
+    /* =========================
+       THEME BUTTON
+       ========================= */
+
+    .theme-toggle {
+        width: 42px;
+        height: 42px;
+
+        top: auto;
+        right: 12px;
+        bottom: 14px;
+
+        border-radius: 12px;
+
+        font-size: 18px;
+    }
+
+    /* =========================
+       BACK HOME
+       ========================= */
+
+    .back-home {
+        top: 12px;
+        left: 12px;
+
+        padding: 9px 13px;
+
+        border-radius: 11px;
+
+        font-size: 13px;
+    }
+
+    .back-home span:first-child {
+        font-size: 18px;
+    }
+
+    /* =========================
+       MODAL
+       ========================= */
+
+    .modal {
+        padding: 12px;
+    }
+
+    .modal-box {
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 22px;
+
+        border-radius: 16px;
+    }
+
+    .modal-icon {
+        font-size: 32px;
+    }
+
+    .modal-box h2 {
+        font-size: 21px;
+    }
+
+    .modal-box > p {
+        font-size: 12px;
+    }
+
+    .ai-input {
+        flex-direction: column;
+    }
+
+    .ai-input input {
+        width: 100%;
+    }
+
+    .ai-input button {
+        width: 100%;
+
+        min-height: 42px;
+    }
+
+    /* =========================
+       AUTH
+       ========================= */
+
+    .auth-container {
+        width: 100%;
+
+        padding: 15px;
+    }
+
+    .auth-card {
+        padding: 25px 18px;
+
+        border-radius: 17px;
+    }
+
+    .auth-logo {
+        margin-bottom: 25px;
+    }
+
+    .auth-card h1 {
+        font-size: 25px;
+    }
+
+    .auth-description {
+        font-size: 13px;
+    }
+
+    .auth-card label {
+        font-size: 13px;
+    }
+
+    .auth-card input {
+        padding: 13px;
+
+        font-size: 15px;
+    }
+
+    .auth-submit {
+        padding: 13px;
+
+        font-size: 15px;
+    }
+
+    /* =========================
+       FEATURE PAGES
+       ========================= */
+
+    .feature-page {
+        width: 100%;
+
+        padding: 75px 15px 40px;
+    }
+
+    .feature-hero {
+        padding: 25px 10px 35px;
+    }
+
+    .feature-big-icon {
+        font-size: 45px;
+    }
+
+    .feature-eyebrow {
+        font-size: 11px;
+
+        letter-spacing: 3px;
+    }
+
+    .feature-hero h1 {
+        font-size: 29px;
+
+        line-height: 1.25;
+
+        letter-spacing: 1.5px;
+    }
+
+    .feature-hero > p:last-child {
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+    .knowledge-summary {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-bottom: 25px;
+    }
+
+    .knowledge-card {
+        padding: 18px;
+    }
+
+    .knowledge-card strong {
+        font-size: 27px;
+    }
+
+    .knowledge-section,
+    .roadmap-section {
+        padding: 18px;
+
+        border-radius: 14px;
+    }
+
+    .knowledge-section h2,
+    .roadmap-section h2 {
+        font-size: 19px;
+
+        line-height: 1.35;
+    }
+
+    .knowledge-section > p,
+    .roadmap-section > p {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+    .knowledge-empty,
+    .roadmap-empty {
+        padding: 30px 15px;
+    }
+
+    .roadmap-item {
+        gap: 11px;
+
+        padding: 15px;
+    }
+
+    .roadmap-number {
+        min-width: 32px;
+
+        width: 32px;
+        height: 32px;
+
+        font-size: 13px;
+    }
+
+    .roadmap-item h3 {
+        font-size: 15px;
+
+        line-height: 1.4;
+    }
+
+    .roadmap-item p {
+        font-size: 12px;
+
+        line-height: 1.6;
+    }
+
+    /* =========================
+       WELCOME PAGE
+       ========================= */
+
+    .intro-hero {
+        min-height: 55vh;
+
+        padding: 60px 18px 40px;
+    }
+
+    .intro-icon {
+        font-size: 38px;
+
+        margin-bottom: 15px;
+    }
+
+    .intro-eyebrow {
+        font-size: 11px !important;
+
+        letter-spacing: 3px;
+    }
+
+    .intro-hero h1 {
+        font-size: clamp(45px, 17vw, 75px);
+
+        letter-spacing: 4px;
+
+        word-break: break-word;
+    }
+
+    .intro-hero h2 {
+        font-size: 15px;
+
+        line-height: 1.5;
+    }
+
+    .welcome-intro {
+        width: 100%;
+
+        padding: 20px 18px 60px;
+    }
+
+    .welcome-intro > p {
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+    .welcome-intro .intro-message {
+        padding: 17px 18px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .welcome-intro .author-box {
+        padding: 20px;
+
+        margin: 25px 0;
+    }
+
+    .welcome-intro .author-box h2 {
+        font-size: 18px;
+    }
+
+    .welcome-intro .author-box p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+}
+
+
+/* =========================================================
+   AI PAGE — MOBILE V2
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .ai-page {
+        width: 100%;
+
+        overflow-x: hidden;
+    }
+
+    .ai-header {
+        width: 100%;
+
+        padding: 15px 12px 10px;
+    }
+
+    .ai-title {
+        gap: 11px;
+
+        margin-top: 35px;
+
+        text-align: left;
+
+        justify-content: flex-start;
+    }
+
+    .ai-logo {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 14px;
+
+        font-size: 25px;
+
+        flex-shrink: 0;
+    }
+
+    .ai-title h1 {
+        font-size: 20px;
+
+        letter-spacing: 1px;
+
+        line-height: 1.2;
+    }
+
+    .ai-title p {
+        font-size: 11px;
+
+        line-height: 1.4;
+    }
+
+    .ai-chat {
+        width: calc(100% - 20px);
+
+        margin: 10px auto 30px;
+
+        border-radius: 15px;
+    }
+
+    .ai-welcome {
+        padding: 27px 15px 22px;
+    }
+
+    .ai-welcome-icon {
+        width: 55px;
+        height: 55px;
+
+        font-size: 28px;
+    }
+
+    .ai-welcome h2 {
+        font-size: 20px;
+
+        line-height: 1.3;
+    }
+
+    .ai-welcome p {
+        font-size: 13px;
+
+        line-height: 1.65;
+    }
+
+    .ai-subjects {
+        gap: 6px;
+    }
+
+    .ai-subjects span {
+        padding: 6px 9px;
+
+        font-size: 11px;
+    }
+
+    .ai-messages {
+        min-height: 100px;
+        max-height: 55vh;
+
+        padding: 15px 12px;
+    }
+
+    .ai-message {
+        gap: 8px;
+
+        margin-bottom: 15px;
+    }
+
+    .message-avatar {
+        width: 30px;
+        height: 30px;
+
+        font-size: 15px;
+    }
+
+    .message-content {
+        max-width: calc(100% - 40px);
+
+        padding: 10px 12px;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+
+        overflow-wrap: anywhere;
+
+        word-break: break-word;
+    }
+
+    .ai-input-box {
+        padding: 10px;
+
+        gap: 7px;
+    }
+
+    .ai-input-box textarea {
+        min-height: 43px;
+        max-height: 110px;
+
+        padding: 10px 11px;
+
+        font-size: 13px;
+    }
+
+    .ai-send {
+        width: 43px;
+        height: 43px;
+
+        border-radius: 11px;
+
+        font-size: 17px;
+    }
+
+    .ai-note {
+        padding: 0 12px 13px;
+
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+}
+
+
+/* =========================================================
+   CỰC NHỎ — ĐIỆN THOẠI 320-380px
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .header {
+        padding: 10px;
+    }
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: 19px;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    .header-actions {
+        gap: 4px;
+    }
+
+    .header-tool,
+    .ai-button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .main {
+        padding: 12px 9px;
+    }
+
+    .menu-item {
+        padding: 8px 9px;
+
+        font-size: 11px;
+    }
+
+    .welcome {
+        padding: 18px 15px;
+    }
+
+    .welcome h2 {
+        font-size: 25px;
+    }
+
+    .welcome-icon {
+        font-size: 36px;
+    }
+
+    .grade-card {
+        padding: 15px;
+    }
+
+    .subject-list button {
+        font-size: 12px;
+    }
+
+    .ai-title h1 {
+        font-size: 18px;
+    }
+
+    .ai-title p {
+        font-size: 10px;
+    }
+
+}
