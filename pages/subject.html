@@ -556,7 +556,7 @@ const data = subjectData[subject] || {
 };
 
 
-document.getElementById("subjectTitle").innerText = subject;
+document.getElementById("subjectTitle").innerText = data.title || subject;
 
 document.getElementById("subjectIcon").innerText = data.icon;
 
@@ -566,7 +566,7 @@ document.getElementById("subjectDescription").innerText =
 document.getElementById("aiSubjectName").innerText =
     subject;
 
-document.title = "EDUPATH - " + subject;
+document.title = "EDUPATH - " + (data.title || subject);
 
 
 const topicGrid = document.getElementById("topicGrid");
