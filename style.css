@@ -3943,3 +3943,20 @@ body.light-mode.ai-page p {
     }
 
 }
+@media (max-width: 600px) {
+    .ai-button {
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 12px;
+    }
+
+    .ai-button span:last-child {
+        display: none;
+    }
+
+    .ai-button span:first-child {
+        font-size: 20px;
+    }
+}
