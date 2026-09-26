@@ -5325,3 +5325,208 @@ body.light-mode.practice-page .practice-ai small {
         grid-template-columns: 1fr;
     }
 }
+/* =========================================================
+   EDUPATH — FIX PRACTICE PAGE
+   XÓA NỀN XANH / TÍM CŨ
+   ========================================================= */
+
+body.practice-page {
+    background: #25231f !important;
+    color: #f2ede2 !important;
+}
+
+body.practice-page .page {
+    background: transparent !important;
+    color: #f2ede2 !important;
+}
+
+/* HEADER */
+
+body.practice-page .practice-header {
+    background: #302d28 !important;
+    border: 1px solid #4a443a !important;
+    color: #f2ede2 !important;
+}
+
+/* ICON */
+
+body.practice-page .practice-icon {
+    background: #3b3730 !important;
+    border: 1px solid #5a5144 !important;
+    color: #f2ede2 !important;
+}
+
+/* TIÊU ĐỀ */
+
+body.practice-page .practice-header h1 {
+    color: #f2ede2 !important;
+}
+
+body.practice-page .practice-header p {
+    color: #b8b0a3 !important;
+}
+
+/* TIÊU ĐỀ PHẦN */
+
+body.practice-page .practice-filter h2,
+body.practice-page .practice-level h2 {
+    color: #f2ede2 !important;
+}
+
+/* CÁC Ô MÔN */
+
+body.practice-page .practice-subject-grid button {
+    background: #302d28 !important;
+    border: 1px solid #4a443a !important;
+    color: #f2ede2 !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important;
+}
+
+body.practice-page .practice-subject-grid button:hover {
+    background: #39352e !important;
+    border-color: #6a5d4c !important;
+}
+
+/* CÁC Ô MỨC ĐỘ */
+
+body.practice-page .level-grid button {
+    background: #302d28 !important;
+    border: 1px solid #4a443a !important;
+    color: #f2ede2 !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important;
+}
+
+body.practice-page .level-grid button:hover {
+    background: #39352e !important;
+    border-color: #6a5d4c !important;
+}
+
+body.practice-page .level-grid strong {
+    color: #f2ede2 !important;
+}
+
+body.practice-page .level-grid span {
+    color: #b8b0a3 !important;
+}
+
+/* Ô ĐANG CHỌN */
+
+body.practice-page .practice-selected {
+    background: #302d28 !important;
+    border: 1px solid #4a443a !important;
+    color: #f2ede2 !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important;
+}
+
+body.practice-page .selected-icon {
+    background: #3b3730 !important;
+    border: 1px solid #5a5144 !important;
+    color: #f2ede2 !important;
+}
+
+body.practice-page .practice-selected h2 {
+    color: #f2ede2 !important;
+}
+
+body.practice-page .practice-selected p {
+    color: #b8b0a3 !important;
+}
+
+/* AI TRỢ GIẢNG */
+
+body.practice-page .practice-ai {
+    background: #3b3730 !important;
+    border: 1px solid #5a5042 !important;
+    color: #f2ede2 !important;
+}
+
+body.practice-page .practice-ai:hover {
+    background: #443e34 !important;
+    border-color: #806e52 !important;
+}
+
+body.practice-page .practice-ai strong {
+    color: #f2ede2 !important;
+}
+
+body.practice-page .practice-ai small {
+    color: #b8b0a3 !important;
+}
+
+body.practice-page .practice-ai b {
+    color: #c6a15b !important;
+}
+
+
+/* =========================================================
+   PRACTICE — LIGHT MODE
+   ========================================================= */
+
+body.light-mode.practice-page {
+    background: #f3efe5 !important;
+    color: #302d28 !important;
+}
+
+body.light-mode.practice-page .page {
+    background: transparent !important;
+}
+
+body.light-mode.practice-page .practice-header,
+body.light-mode.practice-page .practice-subject-grid button,
+body.light-mode.practice-page .level-grid button,
+body.light-mode.practice-page .practice-selected {
+    background: #fffdf7 !important;
+    border-color: #d8cfbf !important;
+    color: #302d28 !important;
+    box-shadow: 0 6px 18px rgba(90,70,40,0.06) !important;
+}
+
+body.light-mode.practice-page .practice-icon,
+body.light-mode.practice-page .selected-icon {
+    background: #eee6d7 !important;
+    border-color: #d8cbb7 !important;
+    color: #8a6d3b !important;
+}
+
+body.light-mode.practice-page .practice-header h1,
+body.light-mode.practice-page .practice-filter h2,
+body.light-mode.practice-page .practice-level h2,
+body.light-mode.practice-page .level-grid strong,
+body.light-mode.practice-page .practice-selected h2 {
+    color: #302d28 !important;
+}
+
+body.light-mode.practice-page .practice-header p,
+body.light-mode.practice-page .level-grid span,
+body.light-mode.practice-page .practice-selected p {
+    color: #686055 !important;
+}
+
+body.light-mode.practice-page .practice-subject-grid button:hover,
+body.light-mode.practice-page .level-grid button:hover {
+    background: #f8f3e8 !important;
+    border-color: #c6a15b !important;
+}
+
+body.light-mode.practice-page .practice-ai {
+    background: #eee6d7 !important;
+    border-color: #d3c09b !important;
+    color: #302d28 !important;
+}
+
+body.light-mode.practice-page .practice-ai:hover {
+    background: #e7ddc9 !important;
+    border-color: #b99b5d !important;
+}
+
+body.light-mode.practice-page .practice-ai strong {
+    color: #302d28 !important;
+}
+
+body.light-mode.practice-page .practice-ai small {
+    color: #686055 !important;
+}
+
+body.light-mode.practice-page .practice-ai b {
+    color: #a78342 !important;
+}
