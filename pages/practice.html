@@ -1,40 +1,286 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>EDUPATH - Luyện tập</title>
+
     <link rel="stylesheet" href="../style.css">
 </head>
 
 <body class="subject-page">
 
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
-
     ☀️
-
 </button>
+
 
 <div class="page">
 
     <button class="back-home" onclick="goHome()">
-    <span>←</span>
-    <span>Về trang chủ</span>
-</button>
+        <span>←</span>
+        <span>Về trang chủ</span>
+    </button>
 
-    <h1>✏️ LUYỆN TẬP</h1>
 
-    <p>
-        Đây là khu vực luyện tập của EDUPATH.
-    </p>
+    <div class="practice-header">
+
+        <div class="practice-icon">
+            ✏️
+        </div>
+
+        <div>
+            <p class="subject-label">
+                EDUPATH
+            </p>
+
+            <h1>
+                LUYỆN TẬP
+            </h1>
+
+            <p id="practiceDescription">
+                Chọn môn học để bắt đầu luyện tập.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="practice-filter">
+
+        <h2>🎯 Chọn môn học</h2>
+
+        <div class="practice-subject-grid">
+
+            <button onclick="selectSubject('Toán')">
+                📐
+                <span>Toán</span>
+            </button>
+
+            <button onclick="selectSubject('Tiếng Anh')">
+                🇬🇧
+                <span>Tiếng Anh</span>
+            </button>
+
+            <button onclick="selectSubject('Vật lí')">
+                ⚡
+                <span>Vật lí</span>
+            </button>
+
+            <button onclick="selectSubject('Hóa học')">
+                🧪
+                <span>Hóa học</span>
+            </button>
+
+            <button onclick="selectSubject('Sinh học')">
+                🌱
+                <span>Sinh học</span>
+            </button>
+
+            <button onclick="selectSubject('Tin học')">
+                💻
+                <span>Tin học</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="practice-level">
+
+        <h2>📊 Chọn mức độ</h2>
+
+        <div class="level-grid">
+
+            <button onclick="chooseLevel('Cơ bản')">
+                <strong>🟢 Cơ bản</strong>
+                <span>Làm quen kiến thức</span>
+            </button>
+
+            <button onclick="chooseLevel('Trung bình')">
+                <strong>🟡 Trung bình</strong>
+                <span>Củng cố kiến thức</span>
+            </button>
+
+            <button onclick="chooseLevel('Nâng cao')">
+                <strong>🔴 Nâng cao</strong>
+                <span>Thử thách bản thân</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="practice-selected" id="practiceSelected">
+
+        <div class="selected-icon">
+            ✏️
+        </div>
+
+        <div>
+            <h2 id="selectedTitle">
+                Chưa chọn nội dung
+            </h2>
+
+            <p id="selectedText">
+                Hãy chọn môn học và mức độ để bắt đầu.
+            </p>
+        </div>
+
+    </div>
+
+
+    <button class="practice-ai" onclick="openPracticeAI()">
+
+        <span class="practice-ai-icon">
+            🤖
+        </span>
+
+        <span>
+            <strong>AI Trợ giảng</strong>
+            <small>
+                Cần giải thích bài? Hỏi AI ngay.
+            </small>
+        </span>
+
+        <b>→</b>
+
+    </button>
 
 </div>
 
-<script>
-function goHome() {
-    window.location.href = "../index.html";
-}
-</script>
+
 <script src="../theme.js"></script>
+
+<script>
+
+const params =
+    new URLSearchParams(window.location.search);
+
+let currentSubject =
+    params.get("subject") || "";
+
+let currentLevel = "";
+
+
+if (currentSubject) {
+
+    document.getElementById(
+        "practiceDescription"
+    ).innerText =
+        "Đang luyện tập: " + currentSubject;
+
+}
+
+
+function goHome() {
+
+    window.location.href =
+        "../index.html";
+
+}
+
+
+function selectSubject(subject) {
+
+    currentSubject = subject;
+
+    document.getElementById(
+        "practiceDescription"
+    ).innerText =
+        "Đã chọn môn: " + subject;
+
+    updateSelected();
+
+}
+
+
+function chooseLevel(level) {
+
+    currentLevel = level;
+
+    updateSelected();
+
+}
+
+
+function updateSelected() {
+
+    const title =
+        document.getElementById(
+            "selectedTitle"
+        );
+
+    const text =
+        document.getElementById(
+            "selectedText"
+        );
+
+
+    if (
+        currentSubject &&
+        currentLevel
+    ) {
+
+        title.innerText =
+            currentSubject +
+            " - " +
+            currentLevel;
+
+        text.innerText =
+            "Bạn đã sẵn sàng luyện tập. Nội dung bài tập sẽ được bổ sung.";
+
+    }
+
+    else if (currentSubject) {
+
+        title.innerText =
+            currentSubject;
+
+        text.innerText =
+            "Hãy chọn mức độ để tiếp tục.";
+
+    }
+
+    else if (currentLevel) {
+
+        title.innerText =
+            currentLevel;
+
+        text.innerText =
+            "Hãy chọn môn học để bắt đầu.";
+
+    }
+
+}
+
+
+function openPracticeAI() {
+
+    let subject =
+        currentSubject || "Tất cả môn học";
+
+
+    if (currentLevel) {
+
+        subject +=
+            " - " +
+            currentLevel;
+
+    }
+
+
+    window.location.href =
+        "ai.html?subject=" +
+        encodeURIComponent(subject);
+
+}
+
+</script>
+
 </body>
 </html>
