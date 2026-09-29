@@ -33,12 +33,12 @@
     <div class="ai-header">
 
         <button class="back-home"
-                onclick="goHome()">
+        onclick="goBack()">
 
-            <span>←</span>
-            <span>Về trang chủ</span>
+    <span>←</span>
+    <span>Quay lại</span>
 
-        </button>
+</button>
 
 
         <div class="ai-title">
@@ -185,11 +185,8 @@ if (subject) {
 
 
 
-function goHome() {
-
-    window.location.href =
-        "../index.html";
-
+function goBack() {
+    window.history.back();
 }
 
 
