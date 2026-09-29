@@ -8,39 +8,43 @@
 </head>
 
 <body class="home-page">
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
     ☀️
 </button>
 
 <header class="header">
-    <div class="logo">
-    <div class="logo-icon">🎓</div>
 
-    <div>
-        <h1>EDUPATH</h1>
-        <p>Mỗi học sinh – một con đường học tập</p>
+    <div class="logo">
+        <div class="logo-icon">🎓</div>
+
+        <div>
+            <h1>EDUPATH</h1>
+            <p>Mỗi học sinh – một con đường học tập</p>
+        </div>
     </div>
-</div>
 
     <div class="header-actions">
 
-    <button class="header-tool" onclick="openPage('knowledge')">
-        <span>🗺️</span>
-        <span>Bản đồ kiến thức</span>
-    </button>
+        <button class="header-tool" onclick="openPage('knowledge')">
+            <span>🗺️</span>
+            <span>Bản đồ kiến thức</span>
+        </button>
 
-    <button class="header-tool" onclick="openPage('roadmap')">
-        <span>🎯</span>
-        <span>Lộ trình cá nhân</span>
-    </button>
+        <button class="header-tool" onclick="openPage('roadmap')">
+            <span>🎯</span>
+            <span>Lộ trình cá nhân</span>
+        </button>
 
-    <button class="ai-button" onclick="openAI()">
-        <span>🤖</span>
-        <span>AI Trợ giảng</span>
-    </button>
+        <button class="ai-button" onclick="openAI()">
+            <span>🤖</span>
+            <span>AI Trợ giảng</span>
+        </button>
 
-</div>
+    </div>
+
 </header>
+
 
 <div class="layout">
 
@@ -48,39 +52,44 @@
 
         <div class="menu-title">MENU</div>
 
-<button class="menu-item active" onclick="goHome()">
-    🏠
-    <span>Trang chủ</span>
-</button>
+        <button class="menu-item active" onclick="goHome()">
+            🏠
+            <span>Trang chủ</span>
+        </button>
 
-<button class="menu-item" onclick="openPage('practice')">
-    ✏️
-    <span>Luyện tập</span>
-</button>
+        <button class="menu-item" onclick="openPage('practice')">
+            ✏️
+            <span>Luyện tập</span>
+        </button>
 
-<button class="menu-item" onclick="openPage('exam')">
-    📝
-    <span>Thi thử</span>
-</button>
+        <button class="menu-item" onclick="openPage('exam')">
+            📝
+            <span>Thi thử</span>
+        </button>
 
-<button class="menu-item" onclick="openPage('progress')">
-    📈
-    <span>Tiến độ</span>
-</button>
+        <button class="menu-item" onclick="openPage('progress')">
+            📈
+            <span>Tiến độ</span>
+        </button>
 
-<button class="menu-item" onclick="openPage('achievements')">
-    🏆
-    <span>Thành tích</span>
-</button>
+        <button class="menu-item" onclick="openPage('achievements')">
+            🏆
+            <span>Thành tích</span>
+        </button>
 
         <div class="sidebar-bottom">
-<div class="user-box" onclick="openAuth()">
-    <div class="avatar">HS</div>
-    <div>
-        <strong>Học sinh</strong>
-        <small>Chưa đăng nhập</small>
-    </div>
-</div>
+
+            <div class="user-box" onclick="openAuth()">
+
+                <div class="avatar">HS</div>
+
+                <div>
+                    <strong>Học sinh</strong>
+                    <small>Chưa đăng nhập</small>
+                </div>
+
+            </div>
+
         </div>
 
     </aside>
@@ -89,125 +98,221 @@
     <main class="main">
 
         <section class="welcome" onclick="openWelcome()">
-    <div>
-        <p class="welcome-small">CHÀO MỪNG ĐẾN VỚI</p>
-        <h2>EDUPATH</h2>
-        <p class="welcome-text">
-            Nền tảng học tập, luyện tập và ôn thi dành cho học sinh THCS.
-        </p>
-    </div>
 
-    <div class="welcome-icon">
-        🎓
-    </div>
-</section>
+            <div>
+
+                <p class="welcome-small">
+                    CHÀO MỪNG ĐẾN VỚI
+                </p>
+
+                <h2>EDUPATH</h2>
+
+                <p class="welcome-text">
+                    Nền tảng học tập, luyện tập và ôn thi
+                    dành cho học sinh THCS.
+                </p>
+
+            </div>
+
+            <div class="welcome-icon">
+                🎓
+            </div>
+
+        </section>
 
 
         <section class="section">
 
             <div class="section-heading">
+
                 <div>
+
                     <h2>📚 Học theo khối lớp</h2>
-                    <p>Chọn khối lớp để bắt đầu học tập</p>
+
+                    <p>
+                        Chọn khối lớp và môn học để bắt đầu
+                    </p>
+
                 </div>
+
             </div>
 
 
             <div class="grade-grid">
 
+
+                <!-- KHỐI 6 -->
+
                 <div class="grade-card grade-6">
+
                     <div class="grade-ellipse">
                         <span>KHỐI</span>
                         <strong>6</strong>
                     </div>
 
                     <div class="subject-list">
-                        <button onclick="openSubject('Toán 6')">Toán</button>
-                        <button onclick="openSubject('Văn 6')">Văn</button>
-                        <button onclick="openSubject('Tiếng Anh 6')">Anh</button>
-                        <button onclick="openSubject('Vật lí 6')">Lí</button>
-                        <button onclick="openSubject('Hóa học 6')">Hóa</button>
-                        <button onclick="openSubject('Sinh học 6')">Sinh</button>
-                        <button onclick="openSubject('Tin học 6')">Tin</button>
+
+                        <button onclick="openSubject('Toán 6')">
+                            Toán
+                        </button>
+
+                        <button onclick="openSubject('Tiếng Anh 6')">
+                            Anh
+                        </button>
+
+                        <button onclick="openSubject('Vật lí 6')">
+                            Lí
+                        </button>
+
+                        <button onclick="openSubject('Tin học 6')">
+                            Tin
+                        </button>
+
                     </div>
+
                 </div>
 
 
+                <!-- KHỐI 7 -->
+
                 <div class="grade-card grade-7">
+
                     <div class="grade-ellipse">
                         <span>KHỐI</span>
                         <strong>7</strong>
                     </div>
 
                     <div class="subject-list">
-                        <button onclick="openSubject('Toán 7')">Toán</button>
-                        <button onclick="openSubject('Văn 7')">Văn</button>
-                        <button onclick="openSubject('Tiếng Anh 7')">Anh</button>
-                        <button onclick="openSubject('Vật lí 7')">Lí</button>
-                        <button onclick="openSubject('Hóa học 7')">Hóa</button>
-                        <button onclick="openSubject('Sinh học 7')">Sinh</button>
-                        <button onclick="openSubject('Tin học 7')">Tin</button>
+
+                        <button onclick="openSubject('Toán 7')">
+                            Toán
+                        </button>
+
+                        <button onclick="openSubject('Tiếng Anh 7')">
+                            Anh
+                        </button>
+
+                        <button onclick="openSubject('Vật lí 7')">
+                            Lí
+                        </button>
+
+                        <button onclick="openSubject('Tin học 7')">
+                            Tin
+                        </button>
+
                     </div>
+
                 </div>
 
 
+                <!-- KHỐI 8 -->
+
                 <div class="grade-card grade-8">
+
                     <div class="grade-ellipse">
                         <span>KHỐI</span>
                         <strong>8</strong>
                     </div>
 
                     <div class="subject-list">
-                        <button onclick="openSubject('Toán 8')">Toán</button>
-                        <button onclick="openSubject('Văn 8')">Văn</button>
-                        <button onclick="openSubject('Tiếng Anh 8')">Anh</button>
-                        <button onclick="openSubject('Vật lí 8')">Lí</button>
-                        <button onclick="openSubject('Hóa học 8')">Hóa</button>
-                        <button onclick="openSubject('Sinh học 8')">Sinh</button>
-                        <button onclick="openSubject('Tin học 8')">Tin</button>
+
+                        <button onclick="openSubject('Toán 8')">
+                            Toán
+                        </button>
+
+                        <button onclick="openSubject('Tiếng Anh 8')">
+                            Anh
+                        </button>
+
+                        <button onclick="openSubject('Vật lí 8')">
+                            Lí
+                        </button>
+
+                        <button onclick="openSubject('Tin học 8')">
+                            Tin
+                        </button>
+
                     </div>
+
                 </div>
 
 
+                <!-- KHỐI 9 -->
+
                 <div class="grade-card grade-9">
+
                     <div class="grade-ellipse">
                         <span>KHỐI</span>
                         <strong>9</strong>
                     </div>
 
                     <div class="subject-list">
-                        <button onclick="openSubject('Toán 9')">Toán</button>
-                        <button onclick="openSubject('Văn 9')">Văn</button>
-                        <button onclick="openSubject('Tiếng Anh 9')">Anh</button>
-                        <button onclick="openSubject('Vật lí 9')">Lí</button>
-                        <button onclick="openSubject('Hóa học 9')">Hóa</button>
-                        <button onclick="openSubject('Sinh học 9')">Sinh</button>
-                        <button onclick="openSubject('Tin học 9')">Tin</button>
+
+                        <button onclick="openSubject('Toán 9')">
+                            Toán
+                        </button>
+
+                        <button onclick="openSubject('Tiếng Anh 9')">
+                            Anh
+                        </button>
+
+                        <button onclick="openSubject('Vật lí 9')">
+                            Lí
+                        </button>
+
+                        <button onclick="openSubject('Tin học 9')">
+                            Tin
+                        </button>
+
                     </div>
+
                 </div>
 
+
+                <!-- TUYỂN SINH 10 -->
 
                 <div class="grade-card grade-10">
 
                     <div class="grade-10-title">
+
                         <span>🎯</span>
+
                         <div>
+
                             <small>ÔN TẬP</small>
-                            <strong>TUYỂN SINH 10</strong>
+
+                            <strong>
+                                TUYỂN SINH 10
+                            </strong>
+
                         </div>
+
                     </div>
+
 
                     <div class="subject-list">
-                        <button onclick="openSubject('Toán 10')">Toán</button>
-                        <button onclick="openSubject('Văn 10')">Văn</button>
-                        <button onclick="openSubject('Tiếng Anh 10')">Anh</button>
-                        <button onclick="openSubject('Tin học 10')">Tin</button>
-                        <button onclick="openSubject('Hóa học 10')">Hóa</button>
-                        <button onclick="openSubject('Vật lí 10')">Lí</button>
-                        <button onclick="openSubject('Sinh học 10')">Sinh</button>
+
+                        <button onclick="openSubject('Toán 10')">
+                            Toán
+                        </button>
+
+                        <button onclick="openSubject('Tiếng Anh 10')">
+                            Anh
+                        </button>
+
+                        <button onclick="openSubject('Vật lí 10')">
+                            Lí
+                        </button>
+
+                        <button onclick="openSubject('Tin học 10')">
+                            Tin
+                        </button>
+
                     </div>
 
+
                     <div class="exam-actions">
+
                         <button onclick="examAction('Đề thi')">
                             📝 Đề thi
                         </button>
@@ -219,18 +324,27 @@
                         <button onclick="examAction('Lộ trình')">
                             🎯 Lộ trình
                         </button>
+
                     </div>
 
                 </div>
+
 
             </div>
 
         </section>
 
+
         <footer>
+
             <strong>EDUPATH</strong>
+
             <span> · </span>
-            <span>Mỗi học sinh – một con đường học tập</span>
+
+            <span>
+                Mỗi học sinh – một con đường học tập
+            </span>
+
         </footer>
 
     </main>
@@ -238,13 +352,19 @@
 </div>
 
 
+<!-- AI TRỢ GIẢNG -->
+
 <div class="modal" id="aiModal">
 
     <div class="modal-box">
 
-        <button class="close" onclick="closeAI()">×</button>
+        <button class="close" onclick="closeAI()">
+            ×
+        </button>
 
-        <div class="modal-icon">🤖</div>
+        <div class="modal-icon">
+            🤖
+        </div>
 
         <h2>AI Trợ giảng</h2>
 
@@ -254,13 +374,17 @@
         </p>
 
         <div class="ai-input">
+
             <input
                 type="text"
                 id="aiQuestion"
                 placeholder="Bạn muốn hỏi điều gì?"
             >
 
-            <button onclick="askAI()">Gửi</button>
+            <button onclick="askAI()">
+                Gửi
+            </button>
+
         </div>
 
         <div id="aiAnswer" class="ai-answer">
@@ -274,5 +398,6 @@
 
 <script src="theme.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
