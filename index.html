@@ -399,5 +399,32 @@
 <script src="theme.js"></script>
 <script src="script.js"></script>
 
+<script type="module">
+import { auth } from "./firebase.js";
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const ten = document.getElementById("userName");
+const trangThai = document.getElementById("userStatus");
+const avatar = document.getElementById("userAvatar");
+
+onAuthStateChanged(auth, function(user) {
+    if (user) {
+        const email = user.email || "";
+        const tenHienThi =
+            user.displayName || email.split("@")[0] || "Học sinh";
+
+        ten.textContent = tenHienThi;
+        trangThai.textContent = email;
+        avatar.textContent = tenHienThi.slice(0, 2).toUpperCase();
+    } else {
+        ten.textContent = "Học sinh";
+        trangThai.textContent = "Chưa đăng nhập";
+        avatar.textContent = "HS";
+    }
+});
+</script>
+
 </body>
 </html>
