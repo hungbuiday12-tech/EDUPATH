@@ -5567,3 +5567,26 @@ body.light-mode.practice-page .practice-ai b {
 .floating-ai span {
     color: #c6a15b;
 }
+
+/* FIX EDUPATH - BỐ CỤC TRANG CHỦ TRÊN MÁY TÍNH */
+
+@media (min-width: 601px) {
+    .layout {
+        display: flex;
+        align-items: stretch;
+        min-height: calc(100vh - 90px);
+    }
+
+    .sidebar {
+        width: 220px;
+        flex: 0 0 220px;
+        position: relative;
+    }
+
+    .main {
+        flex: 1;
+        min-width: 0;
+        overflow: visible;
+    }
+}
+
