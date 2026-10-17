@@ -159,22 +159,31 @@
 
 <script>
 
-function goHome() {
-    window.location.href = "../index.html";
-}
 
-function showRegister() {
+<script type="module">
+import { auth } from "../firebase.js";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+window.goHome = function() {
+    window.location.href = "../index.html";
+};
+
+window.showRegister = function() {
     document.getElementById("loginForm").style.display = "none";
     document.getElementById("registerForm").style.display = "block";
-}
+};
 
-function showLogin() {
+window.showLogin = function() {
     document.getElementById("registerForm").style.display = "none";
     document.getElementById("loginForm").style.display = "block";
-}
+};
 
-function togglePassword(id, button) {
-
+window.togglePassword = function(id, button) {
     const input = document.getElementById(id);
 
     if (input.type === "password") {
@@ -184,34 +193,48 @@ function togglePassword(id, button) {
         input.type = "password";
         button.innerText = "👁";
     }
-}
+};
 
-function login() {
-
+window.login = async function() {
     const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value;
-
     const message = document.getElementById("loginMessage");
 
-    if (email === "" || password === "") {
+    if (!email || !password) {
         message.innerText = "Vui lòng nhập đầy đủ email và mật khẩu.";
         return;
     }
 
     message.innerText = "Đang đăng nhập...";
 
-    // Firebase sẽ được kết nối ở bước tiếp theo
-}
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+        message.innerText = "Đăng nhập thành công!";
 
-function register() {
+        // Tạm thời quay về trang chủ.
+        // Sau này sẽ chuyển đến trang học tập/tài khoản.
+        window.location.href = "../index.html";
+    } catch (error) {
+        if (error.code === "auth/invalid-credential") {
+            message.innerText = "Email hoặc mật khẩu không chính xác.";
+        } else if (error.code === "auth/invalid-email") {
+            message.innerText = "Email không hợp lệ.";
+        } else if (error.code === "auth/too-many-requests") {
+            message.innerText = "Bạn thử quá nhiều lần. Vui lòng thử lại sau.";
+        } else {
+            message.innerText = "Đăng nhập thất bại. Vui lòng thử lại.";
+            console.error(error);
+        }
+    }
+};
 
+window.register = async function() {
     const email = document.getElementById("registerEmail").value.trim();
     const password = document.getElementById("registerPassword").value;
     const password2 = document.getElementById("registerPassword2").value;
-
     const message = document.getElementById("registerMessage");
 
-    if (email === "" || password === "" || password2 === "") {
+    if (!email || !password || !password2) {
         message.innerText = "Vui lòng nhập đầy đủ thông tin.";
         return;
     }
@@ -228,8 +251,52 @@ function register() {
 
     message.innerText = "Đang tạo tài khoản...";
 
-    // Firebase sẽ được kết nối ở bước tiếp theo
-}
+    try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        message.innerText = "Tạo tài khoản thành công!";
+        window.location.href = "../index.html";
+    } catch (error) {
+        if (error.code === "auth/email-already-in-use") {
+            message.innerText = "Email này đã được đăng ký.";
+        } else if (error.code === "auth/invalid-email") {
+            message.innerText = "Email không hợp lệ.";
+        } else if (error.code === "auth/weak-password") {
+            message.innerText = "Mật khẩu chưa đủ mạnh.";
+        } else {
+            message.innerText = "Không thể tạo tài khoản. Vui lòng thử lại.";
+            console.error(error);
+        }
+    }
+};
+
+window.resetPassword = async function() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const message = document.getElementById("loginMessage");
+
+    if (!email) {
+        message.innerText = "Hãy nhập email để đặt lại mật khẩu.";
+        return;
+    }
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+        message.innerText = "Nếu email hợp lệ, hướng dẫn đặt lại mật khẩu sẽ được gửi đến hộp thư.";
+    } catch (error) {
+        if (error.code === "auth/invalid-email") {
+            message.innerText = "Email không hợp lệ.";
+        } else {
+            message.innerText = "Chưa thể gửi email. Vui lòng kiểm tra cấu hình Firebase.";
+            console.error(error);
+        }
+    }
+};
+
+onAuthStateChanged(auth, (user) => {
+    console.log(user ? "Đã đăng nhập:" + user.email : "Chưa đăng nhập");
+});
+</script>
+<script src="../theme.js"></script>
+
 
 </script>
 <script src="../theme.js"></script>
