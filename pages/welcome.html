@@ -6,6 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDUPATH - Chào mừng</title>
     <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .welcome-actions {
+            margin-top: 40px;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid rgba(198, 161, 91, 0.4);
+            border-radius: 16px;
+            background: rgba(198, 161, 91, 0.07);
+        }
+
+        .welcome-actions h2 {
+            margin-bottom: 14px;
+            color: #c6a15b;
+            line-height: 1.5;
+        }
+
+        .welcome-actions p {
+            margin-bottom: 22px;
+            line-height: 1.8;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .welcome-auth-button {
+            display: inline-block;
+            min-width: 150px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .welcome-buttons {
+                flex-direction: column;
+            }
+
+            .welcome-auth-button {
+                width: 100%;
+                max-width: 260px;
+            }
+
+            .welcome-actions h2 {
+                font-size: 19px;
+            }
+        }
+    </style>
 </head>
 
 <body class="welcome-page">
@@ -129,41 +182,46 @@
         <div class="intro-message">
             ❤️ Cảm ơn bạn đã ghé thăm EDUPATH!
             <br><br>
-            🚀 Hãy bắt đầu con đường học tập của bạn ngay hôm nay!
+            🚀 Mỗi hành trình đều bắt đầu từ một bước đi.
         </div>
 
-
-        <!-- KHU VỰC ĐĂNG NHẬP VÀ ĐĂNG KÝ -->
+        <!-- LỜI MỜI ĐĂNG KÝ / ĐĂNG NHẬP -->
 
         <div class="welcome-actions">
 
-            <h2>BẮT ĐẦU HÀNH TRÌNH CỦA BẠN</h2>
+            <h2>
+                BẠN ĐÃ SẴN SÀNG ĐỒNG HÀNH CÙNG CHÚNG MÌNH?
+            </h2>
 
             <p>
-                Đăng nhập hoặc tạo tài khoản để khám phá
-                các tính năng học tập của EDUPATH.
+                Hãy đăng ký hoặc đăng nhập để bắt đầu khám phá
+                những tính năng hữu ích và trải nghiệm những điều thú vị
+                mà EDUPATH dành riêng cho bạn nhé!
             </p>
 
-            <a
-                href="auth.html?mode=login"
-                class="auth-submit welcome-auth-button"
-            >
-                🔑 Đăng nhập
-            </a>
+            <div class="welcome-buttons">
 
-            <a
-                href="auth.html?mode=register"
-                class="auth-submit welcome-auth-button"
-            >
-                ✨ Đăng ký tài khoản
-            </a>
+                <a
+                    href="auth.html?mode=register"
+                    class="auth-submit welcome-auth-button"
+                >
+                    ✨ Đăng ký ngay
+                </a>
+
+                <a
+                    href="auth.html?mode=login"
+                    class="auth-submit welcome-auth-button"
+                >
+                    🔑 Đăng nhập
+                </a>
+
+            </div>
 
         </div>
 
     </div>
 
 </div>
-
 
 <script type="module">
 import { auth } from "../firebase.js";
