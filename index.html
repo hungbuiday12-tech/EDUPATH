@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -77,11 +78,11 @@
             <span>Thành tích</span>
         </button>
 
-           <div class="user-box" id="userBox" onclick="openAuth()">
+        <div class="user-box" id="userBox" onclick="openAuth()">
             <div class="avatar" id="userAvatar">HS</div>
             <div>
                 <strong id="userName">Học sinh</strong>
-                <small id="userStatus">Chưa đăng nhập</small>
+                <small id="userStatus">Đang kiểm tra tài khoản...</small>
             </div>
         </div>
 
@@ -271,13 +272,11 @@
                         <span>🎯</span>
 
                         <div>
-
                             <small>ÔN TẬP</small>
 
                             <strong>
                                 TUYỂN SINH 10
                             </strong>
-
                         </div>
 
                     </div>
@@ -394,6 +393,7 @@
 
 <script type="module">
 import { auth } from "./firebase.js";
+
 import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
@@ -401,21 +401,31 @@ import {
 const ten = document.getElementById("userName");
 const trangThai = document.getElementById("userStatus");
 const avatar = document.getElementById("userAvatar");
+const userBox = document.getElementById("userBox");
 
 onAuthStateChanged(auth, function(user) {
-    if (user) {
-        const email = user.email || "";
-        const tenHienThi =
-            user.displayName || email.split("@")[0] || "Học sinh";
 
-        ten.textContent = tenHienThi;
-        trangThai.textContent = email;
-        avatar.textContent = tenHienThi.slice(0, 2).toUpperCase();
-    } else {
-        ten.textContent = "Học sinh";
-        trangThai.textContent = "Chưa đăng nhập";
-        avatar.textContent = "HS";
+    if (!user) {
+
+        window.location.replace("pages/welcome.html");
+        return;
+
     }
+
+    const email = user.email || "";
+
+    const tenHienThi =
+        user.displayName ||
+        email.split("@")[0] ||
+        "Học sinh";
+
+    ten.textContent = tenHienThi;
+    trangThai.textContent = email;
+    avatar.textContent =
+        tenHienThi.slice(0, 2).toUpperCase();
+
+    userBox.title = "Tài khoản: " + email;
+
 });
 </script>
 
