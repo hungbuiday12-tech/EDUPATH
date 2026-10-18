@@ -8,11 +8,36 @@
     <link rel="stylesheet" href="../style.css">
 
     <style>
+        /* MÀU DARK MODE */
         .settings-page {
+            --settings-bg: #25231f;
+            --settings-card: #302d27;
+            --settings-input: #25231f;
+            --settings-text: #eee8dc;
+            --settings-muted: #b7b0a3;
+            --settings-border: #514a3c;
+            --settings-accent: #c6a15b;
+            --settings-secondary: #403b32;
+            --settings-dialog: #302d27;
+
             min-height: 100vh;
             padding: 35px 16px 60px;
-            background: #25231f;
-            color: #eee8dc;
+            background: var(--settings-bg);
+            color: var(--settings-text);
+            transition: background .25s, color .25s;
+        }
+
+        /* MÀU LIGHT MODE */
+        .settings-page.light-mode {
+            --settings-bg: #f4f0e7;
+            --settings-card: #fffdf7;
+            --settings-input: #ffffff;
+            --settings-text: #302d27;
+            --settings-muted: #6e675b;
+            --settings-border: #d8cdb9;
+            --settings-accent: #98702e;
+            --settings-secondary: #eee5d5;
+            --settings-dialog: #fffdf7;
         }
 
         .settings-container {
@@ -21,51 +46,77 @@
             margin: 0 auto;
         }
 
+        .settings-theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 22px;
+            z-index: 1000;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--settings-border);
+            border-radius: 50%;
+            background: var(--settings-card);
+            color: var(--settings-text);
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+            transition: transform .2s, background .25s;
+        }
+
+        .settings-theme-toggle:hover {
+            transform: rotate(12deg) scale(1.05);
+        }
+
         .settings-top {
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 28px;
+            margin: 38px 0 28px;
         }
 
         .settings-back {
-            border: 1px solid #514a3c;
+            flex-shrink: 0;
+            border: 1px solid var(--settings-border);
             border-radius: 10px;
             padding: 10px 14px;
-            background: #302d27;
-            color: #eee8dc;
+            background: var(--settings-card);
+            color: var(--settings-text);
             cursor: pointer;
         }
 
         .settings-heading h1 {
             font-size: 27px;
-            color: #c6a15b;
+            color: var(--settings-accent);
             margin-bottom: 6px;
         }
 
         .settings-heading p {
-            color: #b7b0a3;
+            color: var(--settings-muted);
             font-size: 14px;
+            line-height: 1.6;
         }
 
         .settings-card {
             padding: 26px;
             margin-bottom: 22px;
-            background: #302d27;
-            border: 1px solid #484237;
+            background: var(--settings-card);
+            color: var(--settings-text);
+            border: 1px solid var(--settings-border);
             border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, .06);
+            transition: background .25s, color .25s, border-color .25s;
         }
 
         .settings-card h2 {
             font-size: 19px;
-            color: #c6a15b;
+            color: var(--settings-accent);
             margin-bottom: 8px;
         }
 
         .settings-description {
             font-size: 14px;
             line-height: 1.7;
-            color: #b7b0a3;
+            color: var(--settings-muted);
             margin-bottom: 22px;
         }
 
@@ -73,27 +124,37 @@
             display: block;
             margin: 17px 0 8px;
             font-size: 14px;
-            color: #e8dfcf;
+            color: var(--settings-text);
         }
 
         .settings-input {
+            display: block;
             width: 100%;
             min-width: 0;
             padding: 12px 14px;
-            border: 1px solid #514a3c;
+            border: 1px solid var(--settings-border);
             border-radius: 9px;
             outline: none;
-            background: #25231f;
-            color: #eee8dc;
+            background: var(--settings-input);
+            color: var(--settings-text);
+            font: inherit;
             font-size: 15px;
+            transition: background .25s, color .25s, border-color .2s;
+        }
+
+        .settings-input::placeholder {
+            color: var(--settings-muted);
+            opacity: .8;
         }
 
         .settings-input:focus {
-            border-color: #c6a15b;
+            border-color: var(--settings-accent);
+            box-shadow: 0 0 0 2px rgba(198, 161, 91, .15);
         }
 
         .settings-input:disabled {
-            opacity: 0.8;
+            opacity: 1;
+            color: var(--settings-muted);
             cursor: not-allowed;
         }
 
@@ -108,11 +169,12 @@
         }
 
         .settings-eye {
+            flex-shrink: 0;
             padding: 11px 12px;
-            border: 1px solid #514a3c;
+            border: 1px solid var(--settings-border);
             border-radius: 9px;
-            background: #3a352c;
-            color: #eee8dc;
+            background: var(--settings-secondary);
+            color: var(--settings-text);
             cursor: pointer;
         }
 
@@ -122,15 +184,21 @@
             padding: 12px 18px;
             border: none;
             border-radius: 9px;
-            background: #c6a15b;
-            color: #25231f;
+            background: var(--settings-accent);
+            color: #ffffff;
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
+            transition: opacity .2s, transform .2s;
+        }
+
+        .settings-button:hover:not(:disabled) {
+            transform: translateY(-1px);
+            opacity: .9;
         }
 
         .settings-button:disabled {
-            opacity: 0.6;
+            opacity: .6;
             cursor: wait;
         }
 
@@ -139,21 +207,22 @@
             font-size: 14px;
             line-height: 1.6;
             overflow-wrap: anywhere;
+            color: var(--settings-text);
         }
 
         .settings-logout {
-            background: #542f2b;
-            color: #ffe7e3;
-            border: 1px solid #81504a;
+            background: #a63e36;
+            color: #ffffff;
         }
 
         .settings-note {
             margin-top: 12px;
             font-size: 13px;
             line-height: 1.7;
-            color: #b7b0a3;
+            color: var(--settings-muted);
         }
 
+        /* HỘP THOẠI ĐĂNG XUẤT */
         .settings-overlay {
             position: fixed;
             inset: 0;
@@ -162,18 +231,19 @@
             align-items: center;
             justify-content: center;
             padding: 18px;
-            background: rgba(0, 0, 0, 0.72);
+            background: rgba(0, 0, 0, .65);
         }
 
         .settings-dialog {
             width: 100%;
             max-width: 390px;
             padding: 26px;
-            border: 1px solid #65563a;
+            border: 1px solid var(--settings-border);
             border-radius: 16px;
-            background: #302d27;
+            background: var(--settings-dialog);
+            color: var(--settings-text);
             text-align: center;
-            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 18px 55px rgba(0, 0, 0, .25);
         }
 
         .settings-dialog-icon {
@@ -182,13 +252,13 @@
         }
 
         .settings-dialog h2 {
-            color: #c6a15b;
+            color: var(--settings-accent);
             margin-bottom: 12px;
             font-size: 21px;
         }
 
         .settings-dialog p {
-            color: #d0c8ba;
+            color: var(--settings-muted);
             line-height: 1.7;
             font-size: 14px;
         }
@@ -204,22 +274,43 @@
             min-width: 100px;
             padding: 11px 18px;
             border-radius: 9px;
-            border: 1px solid #514a3c;
-            background: #403b32;
-            color: #eee8dc;
+            border: 1px solid var(--settings-border);
+            background: var(--settings-secondary);
+            color: var(--settings-text);
             cursor: pointer;
         }
 
         .settings-dialog-buttons .confirm-yes {
-            border-color: #c6a15b;
-            background: #c6a15b;
-            color: #25231f;
+            border-color: var(--settings-accent);
+            background: var(--settings-accent);
+            color: #ffffff;
             font-weight: bold;
+        }
+
+        .settings-page button:focus-visible {
+            outline: 2px solid var(--settings-accent);
+            outline-offset: 3px;
         }
 
         @media (max-width: 480px) {
             .settings-page {
-                padding: 22px 12px 40px;
+                padding: 18px 12px 40px;
+            }
+
+            .settings-theme-toggle {
+                top: 12px;
+                right: 12px;
+            }
+
+            .settings-top {
+                align-items: flex-start;
+                gap: 10px;
+                margin-top: 48px;
+            }
+
+            .settings-back {
+                padding: 9px 10px;
+                font-size: 13px;
             }
 
             .settings-card {
@@ -239,6 +330,17 @@
 
 <body class="settings-page">
 
+<button
+    class="settings-theme-toggle"
+    id="themeToggle"
+    type="button"
+    onclick="toggleTheme()"
+    aria-label="Chuyển chế độ sáng tối"
+    title="Chuyển chế độ sáng tối"
+>
+    ☀️
+</button>
+
 <main class="settings-container">
 
     <div class="settings-top">
@@ -252,8 +354,6 @@
         </div>
     </div>
 
-    <!-- THÔNG TIN TÀI KHOẢN -->
-
     <section class="settings-card">
         <h2>👤 Thông tin tài khoản</h2>
 
@@ -265,23 +365,13 @@
             Tên tài khoản
         </label>
 
-        <input
-            class="settings-input"
-            id="accountName"
-            type="text"
-            disabled
-        >
+        <input class="settings-input" id="accountName" type="text" disabled>
 
         <label class="settings-label" for="accountEmail">
             Email
         </label>
 
-        <input
-            class="settings-input"
-            id="accountEmail"
-            type="email"
-            disabled
-        >
+        <input class="settings-input" id="accountEmail" type="email" disabled>
 
         <label class="settings-label" for="currentPasswordDisplay">
             Mật khẩu hiện tại
@@ -302,27 +392,22 @@
                 id="currentPasswordEye"
                 type="button"
                 aria-label="Thông tin về mật khẩu"
-                title="Mật khẩu được bảo vệ bởi Firebase"
-            >
-                👁
-            </button>
+                title="Thông tin về mật khẩu"
+            >👁</button>
         </div>
 
         <p class="settings-note" id="passwordDisplayNote">
-            Vì lý do bảo mật, Firebase không cho phép đọc lại mật khẩu
-            đã lưu. Bạn có thể đổi mật khẩu ở phần bên dưới.
+            Vì lý do bảo mật, Firebase không cho phép đọc lại mật khẩu đã lưu.
+            Bạn có thể đổi mật khẩu ở phần bên dưới.
         </p>
     </section>
-
-
-    <!-- ĐỔI MẬT KHẨU -->
 
     <section class="settings-card">
         <h2>🔐 Đổi mật khẩu</h2>
 
         <p class="settings-description">
-            Nhập mật khẩu hiện tại để xác minh danh tính, sau đó tạo
-            mật khẩu mới và nhập lại để xác nhận.
+            Nhập mật khẩu hiện tại để xác minh danh tính, sau đó tạo mật khẩu
+            mới và nhập lại để xác nhận.
         </p>
 
         <form id="changePasswordForm">
@@ -341,13 +426,7 @@
                     required
                 >
 
-                <button
-                    class="settings-eye"
-                    type="button"
-                    data-toggle="oldPassword"
-                >
-                    👁
-                </button>
+                <button class="settings-eye" type="button" data-toggle="oldPassword">👁</button>
             </div>
 
             <label class="settings-label" for="newPassword">
@@ -365,13 +444,7 @@
                     required
                 >
 
-                <button
-                    class="settings-eye"
-                    type="button"
-                    data-toggle="newPassword"
-                >
-                    👁
-                </button>
+                <button class="settings-eye" type="button" data-toggle="newPassword">👁</button>
             </div>
 
             <label class="settings-label" for="confirmNewPassword">
@@ -389,35 +462,17 @@
                     required
                 >
 
-                <button
-                    class="settings-eye"
-                    type="button"
-                    data-toggle="confirmNewPassword"
-                >
-                    👁
-                </button>
+                <button class="settings-eye" type="button" data-toggle="confirmNewPassword">👁</button>
             </div>
 
-            <button
-                class="settings-button"
-                id="changePasswordButton"
-                type="submit"
-            >
+            <button class="settings-button" id="changePasswordButton" type="submit">
                 Cập nhật mật khẩu
             </button>
 
-            <p
-                class="settings-message"
-                id="passwordMessage"
-                role="status"
-                aria-live="polite"
-            ></p>
+            <p class="settings-message" id="passwordMessage" role="status" aria-live="polite"></p>
 
         </form>
     </section>
-
-
-    <!-- ĐĂNG XUẤT -->
 
     <section class="settings-card">
         <h2>🚪 Đăng xuất</h2>
@@ -426,19 +481,12 @@
             Đăng xuất khỏi tài khoản hiện tại trên thiết bị này.
         </p>
 
-        <button
-            class="settings-button settings-logout"
-            id="logoutButton"
-            type="button"
-        >
+        <button class="settings-button settings-logout" id="logoutButton" type="button">
             Đăng xuất
         </button>
     </section>
 
 </main>
-
-
-<!-- HỘP THOẠI XÁC NHẬN -->
 
 <div
     class="settings-overlay"
@@ -459,31 +507,16 @@
         </p>
 
         <div class="settings-dialog-buttons">
-
-            <button type="button" id="cancelLogout">
-                Không
-            </button>
-
-            <button
-                type="button"
-                class="confirm-yes"
-                id="confirmLogout"
-            >
-                Có
-            </button>
-
+            <button type="button" id="cancelLogout">Không</button>
+            <button type="button" class="confirm-yes" id="confirmLogout">Có</button>
         </div>
 
-        <p
-            class="settings-message"
-            id="logoutMessage"
-            role="status"
-            aria-live="polite"
-        ></p>
+        <p class="settings-message" id="logoutMessage" role="status" aria-live="polite"></p>
 
     </div>
 </div>
 
+<script src="../theme.js"></script>
 
 <script type="module">
 import { auth } from "../firebase.js";
@@ -495,7 +528,6 @@ import {
     updatePassword,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
 
 const accountName = document.getElementById("accountName");
 const accountEmail = document.getElementById("accountEmail");
@@ -510,14 +542,9 @@ const confirmLogoutButton = document.getElementById("confirmLogout");
 const cancelLogoutButton = document.getElementById("cancelLogout");
 
 let currentUser = null;
-let authChecked = false;
 
-
-// Kiểm tra trạng thái đăng nhập.
-
+/* KIỂM TRA TÀI KHOẢN */
 onAuthStateChanged(auth, function(user) {
-    authChecked = true;
-
     if (!user) {
         window.location.replace("welcome.html");
         return;
@@ -532,16 +559,12 @@ onAuthStateChanged(auth, function(user) {
     accountEmail.value = user.email || "";
 });
 
-
-// Quay lại trang chủ.
-
+/* QUAY LẠI TRANG CHỦ */
 document.getElementById("backButton").addEventListener("click", function() {
     window.location.href = "../index.html";
 });
 
-
-// Hiện / ẩn các mật khẩu do người dùng nhập.
-
+/* HIỆN / ẨN MẬT KHẨU ĐANG NHẬP */
 document.querySelectorAll("[data-toggle]").forEach(function(button) {
     button.addEventListener("click", function() {
         const input = document.getElementById(button.dataset.toggle);
@@ -556,17 +579,13 @@ document.querySelectorAll("[data-toggle]").forEach(function(button) {
     });
 });
 
-
-// Không thể hiện mật khẩu thật đã lưu trên Firebase.
-
+/* KHÔNG THỂ ĐỌC LẠI MẬT KHẨU ĐÃ LƯU */
 document.getElementById("currentPasswordEye").addEventListener("click", function() {
     document.getElementById("passwordDisplayNote").textContent =
-        "Mật khẩu thật không thể được đọc lại từ Firebase. Hãy dùng phần Đổi mật khẩu bên dưới để cập nhật mật khẩu.";
+        "Firebase không cho phép xem lại mật khẩu đã lưu. Bạn có thể đổi mật khẩu bằng biểu mẫu bên dưới.";
 });
 
-
-// Đổi mật khẩu.
-
+/* ĐỔI MẬT KHẨU */
 passwordForm.addEventListener("submit", async function(event) {
     event.preventDefault();
 
@@ -636,47 +655,38 @@ passwordForm.addEventListener("submit", async function(event) {
             passwordMessage.textContent = "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau.";
         } else if (error.code === "auth/requires-recent-login") {
             passwordMessage.textContent =
-                "Phiên đăng nhập đã cũ. Hãy đăng xuất rồi đăng nhập lại trước khi đổi mật khẩu.";
+                "Phiên đăng nhập đã cũ. Hãy đăng nhập lại rồi thử đổi mật khẩu.";
         } else if (error.code === "auth/network-request-failed") {
             passwordMessage.textContent = "Lỗi mạng. Hãy kiểm tra kết nối rồi thử lại.";
         } else {
-            passwordMessage.textContent =
-                "Chưa thể đổi mật khẩu. Vui lòng kiểm tra thông tin và thử lại.";
+            passwordMessage.textContent = "Chưa thể đổi mật khẩu. Vui lòng thử lại.";
         }
     } finally {
         changePasswordButton.disabled = false;
     }
 });
 
-
-// Mở hộp thoại đăng xuất.
-
+/* MỞ HỘP THOẠI ĐĂNG XUẤT */
 document.getElementById("logoutButton").addEventListener("click", function() {
     logoutMessage.textContent = "";
     logoutOverlay.style.display = "flex";
     cancelLogoutButton.focus();
 });
 
-
-// Bấm Không để đóng hộp thoại.
-
+/* KHÔNG ĐĂNG XUẤT */
 cancelLogoutButton.addEventListener("click", function() {
     logoutOverlay.style.display = "none";
     logoutMessage.textContent = "";
 });
 
-
-// Bấm ra ngoài hộp thoại để đóng.
-
+/* ĐÓNG KHI BẤM BÊN NGOÀI */
 logoutOverlay.addEventListener("click", function(event) {
     if (event.target === logoutOverlay) {
         logoutOverlay.style.display = "none";
     }
 });
 
-
-// Bấm Có để đăng xuất và quay về trang chào mừng.
-
+/* XÁC NHẬN ĐĂNG XUẤT */
 confirmLogoutButton.addEventListener("click", async function() {
     confirmLogoutButton.disabled = true;
     cancelLogoutButton.disabled = true;
@@ -692,10 +702,7 @@ confirmLogoutButton.addEventListener("click", async function() {
         cancelLogoutButton.disabled = false;
     }
 });
-
 </script>
-
-<script src="../theme.js"></script>
 
 </body>
 </html>
