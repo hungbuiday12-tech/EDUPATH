@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUPATH - Cài đặt tài khoản</title>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        .settings-page {
+            min-height: 100vh;
+            padding: 35px 16px 60px;
+            background: #25231f;
+            color: #eee8dc;
+        }
+
+        .settings-container {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .settings-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .settings-back {
+            border: 1px solid #514a3c;
+            border-radius: 10px;
+            padding: 10px 14px;
+            background: #302d27;
+            color: #eee8dc;
+            cursor: pointer;
+        }
+
+        .settings-heading h1 {
+            font-size: 27px;
+            color: #c6a15b;
+            margin-bottom: 6px;
+        }
+
+        .settings-heading p {
+            color: #b7b0a3;
+            font-size: 14px;
+        }
+
+        .settings-card {
+            padding: 26px;
+            margin-bottom: 22px;
+            background: #302d27;
+            border: 1px solid #484237;
+            border-radius: 16px;
+        }
+
+        .settings-card h2 {
+            font-size: 19px;
+            color: #c6a15b;
+            margin-bottom: 8px;
+        }
+
+        .settings-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #b7b0a3;
+            margin-bottom: 22px;
+        }
+
+        .settings-label {
+            display: block;
+            margin: 17px 0 8px;
+            font-size: 14px;
+            color: #e8dfcf;
+        }
+
+        .settings-input {
+            width: 100%;
+            min-width: 0;
+            padding: 12px 14px;
+            border: 1px solid #514a3c;
+            border-radius: 9px;
+            outline: none;
+            background: #25231f;
+            color: #eee8dc;
+            font-size: 15px;
+        }
+
+        .settings-input:focus {
+            border-color: #c6a15b;
+        }
+
+        .settings-input:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+
+        .settings-password-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .settings-password-box .settings-input {
+            flex: 1;
+        }
+
+        .settings-eye {
+            padding: 11px 12px;
+            border: 1px solid #514a3c;
+            border-radius: 9px;
+            background: #3a352c;
+            color: #eee8dc;
+            cursor: pointer;
+        }
+
+        .settings-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 9px;
+            background: #c6a15b;
+            color: #25231f;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .settings-button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .settings-message {
+            margin-top: 14px;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .settings-logout {
+            background: #542f2b;
+            color: #ffe7e3;
+            border: 1px solid #81504a;
+        }
+
+        .settings-note {
+            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #b7b0a3;
+        }
+
+        .settings-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: rgba(0, 0, 0, 0.72);
+        }
+
+        .settings-dialog {
+            width: 100%;
+            max-width: 390px;
+            padding: 26px;
+            border: 1px solid #65563a;
+            border-radius: 16px;
+            background: #302d27;
+            text-align: center;
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+        }
+
+        .settings-dialog-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .settings-dialog h2 {
+            color: #c6a15b;
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .settings-dialog p {
+            color: #d0c8ba;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .settings-dialog-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .settings-dialog-buttons button {
+            min-width: 100px;
+            padding: 11px 18px;
+            border-radius: 9px;
+            border: 1px solid #514a3c;
+            background: #403b32;
+            color: #eee8dc;
+            cursor: pointer;
+        }
+
+        .settings-dialog-buttons .confirm-yes {
+            border-color: #c6a15b;
+            background: #c6a15b;
+            color: #25231f;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .settings-page {
+                padding: 22px 12px 40px;
+            }
+
+            .settings-card {
+                padding: 19px 16px;
+            }
+
+            .settings-heading h1 {
+                font-size: 22px;
+            }
+
+            .settings-dialog-buttons button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="settings-page">
+
+<main class="settings-container">
+
+    <div class="settings-top">
+        <button class="settings-back" id="backButton" type="button">
+            ← Quay lại
+        </button>
+
+        <div class="settings-heading">
+            <h1>Cài đặt tài khoản</h1>
+            <p>Quản lý thông tin và bảo mật tài khoản EDUPATH.</p>
+        </div>
+    </div>
+
+    <!-- THÔNG TIN TÀI KHOẢN -->
+
+    <section class="settings-card">
+        <h2>👤 Thông tin tài khoản</h2>
+
+        <p class="settings-description">
+            Thông tin đăng nhập hiện tại của bạn.
+        </p>
+
+        <label class="settings-label" for="accountName">
+            Tên tài khoản
+        </label>
+
+        <input
+            class="settings-input"
+            id="accountName"
+            type="text"
+            disabled
+        >
+
+        <label class="settings-label" for="accountEmail">
+            Email
+        </label>
+
+        <input
+            class="settings-input"
+            id="accountEmail"
+            type="email"
+            disabled
+        >
+
+        <label class="settings-label" for="currentPasswordDisplay">
+            Mật khẩu hiện tại
+        </label>
+
+        <div class="settings-password-box">
+            <input
+                class="settings-input"
+                id="currentPasswordDisplay"
+                type="password"
+                value="••••••••"
+                readonly
+                aria-label="Mật khẩu hiện tại được ẩn"
+            >
+
+            <button
+                class="settings-eye"
+                id="currentPasswordEye"
+                type="button"
+                aria-label="Thông tin về mật khẩu"
+                title="Mật khẩu được bảo vệ bởi Firebase"
+            >
+                👁
+            </button>
+        </div>
+
+        <p class="settings-note" id="passwordDisplayNote">
+            Vì lý do bảo mật, Firebase không cho phép đọc lại mật khẩu
+            đã lưu. Bạn có thể đổi mật khẩu ở phần bên dưới.
+        </p>
+    </section>
+
+
+    <!-- ĐỔI MẬT KHẨU -->
+
+    <section class="settings-card">
+        <h2>🔐 Đổi mật khẩu</h2>
+
+        <p class="settings-description">
+            Nhập mật khẩu hiện tại để xác minh danh tính, sau đó tạo
+            mật khẩu mới và nhập lại để xác nhận.
+        </p>
+
+        <form id="changePasswordForm">
+
+            <label class="settings-label" for="oldPassword">
+                Mật khẩu cũ
+            </label>
+
+            <div class="settings-password-box">
+                <input
+                    class="settings-input"
+                    id="oldPassword"
+                    type="password"
+                    placeholder="Nhập mật khẩu hiện tại"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    class="settings-eye"
+                    type="button"
+                    data-toggle="oldPassword"
+                >
+                    👁
+                </button>
+            </div>
+
+            <label class="settings-label" for="newPassword">
+                Mật khẩu mới
+            </label>
+
+            <div class="settings-password-box">
+                <input
+                    class="settings-input"
+                    id="newPassword"
+                    type="password"
+                    placeholder="Ít nhất 6 ký tự"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <button
+                    class="settings-eye"
+                    type="button"
+                    data-toggle="newPassword"
+                >
+                    👁
+                </button>
+            </div>
+
+            <label class="settings-label" for="confirmNewPassword">
+                Nhập lại mật khẩu mới
+            </label>
+
+            <div class="settings-password-box">
+                <input
+                    class="settings-input"
+                    id="confirmNewPassword"
+                    type="password"
+                    placeholder="Xác nhận mật khẩu mới"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <button
+                    class="settings-eye"
+                    type="button"
+                    data-toggle="confirmNewPassword"
+                >
+                    👁
+                </button>
+            </div>
+
+            <button
+                class="settings-button"
+                id="changePasswordButton"
+                type="submit"
+            >
+                Cập nhật mật khẩu
+            </button>
+
+            <p
+                class="settings-message"
+                id="passwordMessage"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+        </form>
+    </section>
+
+
+    <!-- ĐĂNG XUẤT -->
+
+    <section class="settings-card">
+        <h2>🚪 Đăng xuất</h2>
+
+        <p class="settings-description">
+            Đăng xuất khỏi tài khoản hiện tại trên thiết bị này.
+        </p>
+
+        <button
+            class="settings-button settings-logout"
+            id="logoutButton"
+            type="button"
+        >
+            Đăng xuất
+        </button>
+    </section>
+
+</main>
+
+
+<!-- HỘP THOẠI XÁC NHẬN -->
+
+<div
+    class="settings-overlay"
+    id="logoutOverlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="logoutTitle"
+    aria-describedby="logoutDescription"
+>
+    <div class="settings-dialog">
+
+        <div class="settings-dialog-icon">🚪</div>
+
+        <h2 id="logoutTitle">Xác nhận đăng xuất</h2>
+
+        <p id="logoutDescription">
+            Bạn chắc chắn muốn đăng xuất khỏi tài khoản EDUPATH?
+        </p>
+
+        <div class="settings-dialog-buttons">
+
+            <button type="button" id="cancelLogout">
+                Không
+            </button>
+
+            <button
+                type="button"
+                class="confirm-yes"
+                id="confirmLogout"
+            >
+                Có
+            </button>
+
+        </div>
+
+        <p
+            class="settings-message"
+            id="logoutMessage"
+            role="status"
+            aria-live="polite"
+        ></p>
+
+    </div>
+</div>
+
+
+<script type="module">
+import { auth } from "../firebase.js";
+
+import {
+    onAuthStateChanged,
+    EmailAuthProvider,
+    reauthenticateWithCredential,
+    updatePassword,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+const accountName = document.getElementById("accountName");
+const accountEmail = document.getElementById("accountEmail");
+
+const passwordForm = document.getElementById("changePasswordForm");
+const passwordMessage = document.getElementById("passwordMessage");
+const changePasswordButton = document.getElementById("changePasswordButton");
+
+const logoutOverlay = document.getElementById("logoutOverlay");
+const logoutMessage = document.getElementById("logoutMessage");
+const confirmLogoutButton = document.getElementById("confirmLogout");
+const cancelLogoutButton = document.getElementById("cancelLogout");
+
+let currentUser = null;
+let authChecked = false;
+
+
+// Kiểm tra trạng thái đăng nhập.
+
+onAuthStateChanged(auth, function(user) {
+    authChecked = true;
+
+    if (!user) {
+        window.location.replace("welcome.html");
+        return;
+    }
+
+    currentUser = user;
+
+    accountName.value =
+        user.displayName ||
+        (user.email ? user.email.split("@")[0] : "Học sinh");
+
+    accountEmail.value = user.email || "";
+});
+
+
+// Quay lại trang chủ.
+
+document.getElementById("backButton").addEventListener("click", function() {
+    window.location.href = "../index.html";
+});
+
+
+// Hiện / ẩn các mật khẩu do người dùng nhập.
+
+document.querySelectorAll("[data-toggle]").forEach(function(button) {
+    button.addEventListener("click", function() {
+        const input = document.getElementById(button.dataset.toggle);
+
+        if (input.type === "password") {
+            input.type = "text";
+            button.textContent = "🙈";
+        } else {
+            input.type = "password";
+            button.textContent = "👁";
+        }
+    });
+});
+
+
+// Không thể hiện mật khẩu thật đã lưu trên Firebase.
+
+document.getElementById("currentPasswordEye").addEventListener("click", function() {
+    document.getElementById("passwordDisplayNote").textContent =
+        "Mật khẩu thật không thể được đọc lại từ Firebase. Hãy dùng phần Đổi mật khẩu bên dưới để cập nhật mật khẩu.";
+});
+
+
+// Đổi mật khẩu.
+
+passwordForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    if (!currentUser || !currentUser.email) {
+        passwordMessage.textContent = "Không tìm thấy tài khoản đang đăng nhập.";
+        return;
+    }
+
+    const oldPassword = document.getElementById("oldPassword").value;
+    const newPassword = document.getElementById("newPassword").value;
+    const confirmNewPassword = document.getElementById("confirmNewPassword").value;
+
+    if (!oldPassword || !newPassword || !confirmNewPassword) {
+        passwordMessage.textContent = "Vui lòng nhập đầy đủ các trường mật khẩu.";
+        return;
+    }
+
+    if (newPassword.length < 6) {
+        passwordMessage.textContent = "Mật khẩu mới phải có ít nhất 6 ký tự.";
+        return;
+    }
+
+    if (newPassword !== confirmNewPassword) {
+        passwordMessage.textContent = "Mật khẩu mới nhập lại không khớp.";
+        return;
+    }
+
+    if (oldPassword === newPassword) {
+        passwordMessage.textContent = "Mật khẩu mới phải khác mật khẩu cũ.";
+        return;
+    }
+
+    changePasswordButton.disabled = true;
+    passwordMessage.textContent = "Đang xác minh và cập nhật mật khẩu...";
+
+    try {
+        const credential = EmailAuthProvider.credential(
+            currentUser.email,
+            oldPassword
+        );
+
+        await reauthenticateWithCredential(currentUser, credential);
+        await updatePassword(currentUser, newPassword);
+
+        passwordForm.reset();
+
+        document.querySelectorAll("[data-toggle]").forEach(function(button) {
+            const input = document.getElementById(button.dataset.toggle);
+            input.type = "password";
+            button.textContent = "👁";
+        });
+
+        passwordMessage.textContent = "Đổi mật khẩu thành công!";
+
+    } catch (error) {
+        console.error(error);
+
+        if (
+            error.code === "auth/invalid-credential" ||
+            error.code === "auth/wrong-password" ||
+            error.code === "auth/invalid-login-credentials"
+        ) {
+            passwordMessage.textContent = "Mật khẩu cũ không chính xác.";
+        } else if (error.code === "auth/weak-password") {
+            passwordMessage.textContent = "Mật khẩu mới chưa đủ mạnh.";
+        } else if (error.code === "auth/too-many-requests") {
+            passwordMessage.textContent = "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau.";
+        } else if (error.code === "auth/requires-recent-login") {
+            passwordMessage.textContent =
+                "Phiên đăng nhập đã cũ. Hãy đăng xuất rồi đăng nhập lại trước khi đổi mật khẩu.";
+        } else if (error.code === "auth/network-request-failed") {
+            passwordMessage.textContent = "Lỗi mạng. Hãy kiểm tra kết nối rồi thử lại.";
+        } else {
+            passwordMessage.textContent =
+                "Chưa thể đổi mật khẩu. Vui lòng kiểm tra thông tin và thử lại.";
+        }
+    } finally {
+        changePasswordButton.disabled = false;
+    }
+});
+
+
+// Mở hộp thoại đăng xuất.
+
+document.getElementById("logoutButton").addEventListener("click", function() {
+    logoutMessage.textContent = "";
+    logoutOverlay.style.display = "flex";
+    cancelLogoutButton.focus();
+});
+
+
+// Bấm Không để đóng hộp thoại.
+
+cancelLogoutButton.addEventListener("click", function() {
+    logoutOverlay.style.display = "none";
+    logoutMessage.textContent = "";
+});
+
+
+// Bấm ra ngoài hộp thoại để đóng.
+
+logoutOverlay.addEventListener("click", function(event) {
+    if (event.target === logoutOverlay) {
+        logoutOverlay.style.display = "none";
+    }
+});
+
+
+// Bấm Có để đăng xuất và quay về trang chào mừng.
+
+confirmLogoutButton.addEventListener("click", async function() {
+    confirmLogoutButton.disabled = true;
+    cancelLogoutButton.disabled = true;
+    logoutMessage.textContent = "Đang đăng xuất...";
+
+    try {
+        await signOut(auth);
+        window.location.replace("welcome.html");
+    } catch (error) {
+        console.error(error);
+        logoutMessage.textContent = "Đăng xuất thất bại. Vui lòng thử lại.";
+        confirmLogoutButton.disabled = false;
+        cancelLogoutButton.disabled = false;
+    }
+});
+
+</script>
+
+<script src="../theme.js"></script>
+
+</body>
+</html>
